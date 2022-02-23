@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "be77313e-0490-4727-b2ac-78212abafa05",
+		"name": "Board test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Returns boards list (GET Method Test)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://patronageapi.herokuapp.com/api/board/list",
+					"protocol": "https",
+					"host": [
+						"patronageapi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"board",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return board by ID (GET Method Test)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://patronageapi.herokuapp.com/api/board/1",
+					"protocol": "https",
+					"host": [
+						"patronageapi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"board",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return board by ID (GET Method Test - error 404 )",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://patronageapi.herokuapp.com/api/board/5",
+					"protocol": "https",
+					"host": [
+						"patronageapi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"board",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
