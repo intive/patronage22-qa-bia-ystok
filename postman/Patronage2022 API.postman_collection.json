@@ -1,0 +1,711 @@
+{
+	"info": {
+		"_postman_id": "db8e7786-36fd-407f-bbdc-c333a73063fe",
+		"name": "Patronage2022 API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "Create Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Project created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": \"string\",\r\n  \"name\": \"string\",\r\n  \"description\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/Project",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"Project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of projects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/Project",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"Project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get project details by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// cannot be implemented, create projetct didnt return id, list of projects didnt return anything, so that i dont have any id\r",
+									"pm.test(\"Get project by id\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/Project/12345",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"Project",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit project with put",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// cannot be implemented, create projetct didnt return id, list of projects didnt return anything, so that i dont have any id\r",
+									"pm.test(\"Update project with given id\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": \"updatedString\",\r\n  \"name\": \"updatedString\",\r\n  \"description\": \"updatedString\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/Project/12345",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"Project",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit project with patch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// cannot be implemented, create projetct didnt return id, list of projects didnt return anything, so that i dont have any id\r",
+									"pm.test(\"Patch project\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": \"After Patch string\",\r\n  \"name\": \"After Patch string\",\r\n  \"description\": \"After Patch string\",\r\n  \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/Project/12345",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"Project",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// cannot be implemented, create projetct didnt return id, list of projects didnt return anything, so that i dont have any id\r",
+									"pm.test(\"Project deleting\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/Project/12345",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"Project",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Board",
+			"item": [
+				{
+					"name": "Create Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Board created\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"data\": {\r\n    \"id\": 0,\r\n    \"alias\": \"string\",\r\n    \"name\": \"string\",\r\n    \"description\": \"string\",\r\n    \"projectId\": 0,\r\n    \"statusId\": 0,\r\n    \"boardId\": 0,\r\n    \"isActive\": true,\r\n    \"createdOn\": \"2022-02-21T14:40:18.604Z\",\r\n    \"modifiedOn\": \"2022-02-21T14:40:18.604Z\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/board/create",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"board",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all boards",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Board returned\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/board/list",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"board",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get board by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// cannot be implemented, i dont have any id\r",
+									"pm.test(\"Board with given id returned\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/board/list/12345",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"board",
+								"list",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Full board update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// cannot be implemented, i dont have any id\r",
+									"pm.test(\"Full board updated\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": 0,\r\n    \"alias\": \"string\",\r\n    \"name\": \"string\",\r\n    \"description\": \"string\",\r\n    \"projectId\": 0,\r\n    \"statusId\": 0,\r\n    \"boardId\": 0,\r\n    \"isActive\": true,\r\n    \"createdOn\": \"2022-02-21T15:13:10.363Z\",\r\n    \"modifiedOn\": \"2022-02-21T15:13:10.363Z\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/board/update",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"board",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update selected properties",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// cannot be implemented, i dont have any id\r",
+									"pm.test(\"Selected properties updated\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": 0,\r\n    \"alias\": {\r\n      \"data\": \"string\"\r\n    },\r\n    \"name\": {\r\n      \"data\": \"string\"\r\n    },\r\n    \"description\": {\r\n      \"data\": \"string\"\r\n    },\r\n    \"projectId\": {\r\n      \"data\": 0\r\n    },\r\n    \"isActive\": {\r\n      \"data\": true\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/board/updateLight",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"board",
+								"updateLight"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// cannot be implemented, i dont have any id\r",
+									"pm.test(\"Board deleted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/board/delete/12345",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"board",
+								"delete",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Issue",
+			"item": [
+				{
+					"name": "Create issue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Issue creating\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"name\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"description\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"projectId\": 0,\r\n  \"boardId\": {\r\n    \"data\": 0\r\n  },\r\n  \"statusId\": {\r\n    \"data\": 0\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/issue/create",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"issue",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update issue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update issue\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": {\r\n    \"data\": \"updatedString\"\r\n  },\r\n  \"name\": {\r\n    \"data\": \"updatedString\"\r\n  },\r\n  \"description\": {\r\n    \"data\": \"updatedString\"\r\n  },\r\n  \"projectId\": 0,\r\n  \"boardId\": {\r\n    \"data\": 0\r\n  },\r\n  \"statusId\": {\r\n    \"data\": 0\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/issue/update/12345",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"issue",
+								"update",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update selected properties",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update selected issue's properties\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": {\r\n    \"data\": \"lightString\"\r\n  },\r\n  \"name\": {\r\n    \"data\": \"lightString\"\r\n  },\r\n  \"description\": {\r\n    \"data\": \"lightString\"\r\n  },\r\n  \"projectId\": 0,\r\n  \"boardId\": {\r\n    \"data\": 0\r\n  },\r\n  \"statusId\": {\r\n    \"data\": 0\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/issue/update/12345",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"issue",
+								"update",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all issues",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Issue's list returned\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/issue/list",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"issue",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get issue by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Issue with given id returned\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/issue/12345",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"issue",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete issue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Issue with given id deleted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/issue/delete/12345",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"issue",
+								"delete",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Backend running",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Backend is running\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}api/HelloWorld",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"HelloWorld"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
