@@ -1,0 +1,696 @@
+{
+	"info": {
+		"_postman_id": "01893f6c-7d28-4b7b-8073-f77205303162",
+		"name": "patronageapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Boards",
+			"item": [
+				{
+					"name": "Boards list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/board/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board",
+								"list"
+							],
+							"query": [
+								{
+									"key": "alias",
+									"value": "string123",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "string123",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "string123",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/board/{{boardId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board",
+								"{{boardId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": 0,\r\n    \"alias\": \"string\",\r\n    \"name\": \"string\",\r\n    \"description\": \"string\",\r\n    \"projectId\": 0,\r\n    \"statusId\": 0,\r\n    \"boardId\": 0,\r\n    \"isActive\": true,\r\n    \"createdOn\": \"2022-02-22T11:45:57.911Z\",\r\n    \"modifiedOn\": \"2022-02-22T11:45:57.911Z\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/board/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": {{boardId}},\r\n    \"alias\": \"string1\",\r\n    \"name\": \"string1\",\r\n    \"description\": \"string1\",\r\n    \"projectId\": 0,\r\n    \"statusId\": 0,\r\n    \"boardId\": 0,\r\n    \"isActive\": true,\r\n    \"createdOn\": \"2022-02-22T20:42:33.173Z\",\r\n    \"modifiedOn\": \"2022-02-22T20:42:33.173Z\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/board/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Soft delete board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/board/delete/{{boardId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board",
+								"delete",
+								"{{boardId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": {{boardId}},\r\n    \"alias\": {\r\n      \"data\": \"string\"\r\n    },\r\n    \"name\": {\r\n      \"data\": \"string\"\r\n    },\r\n    \"description\": {\r\n      \"data\": \"string\"\r\n    },\r\n    \"projectId\": {\r\n      \"data\": 0\r\n    },\r\n    \"isActive\": {\r\n      \"data\": true\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/board/updateLight",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"board",
+								"updateLight"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Issues",
+			"item": [
+				{
+					"name": "Get issue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/issue/{{issueId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"issue",
+								"{{issueId}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create issue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"name\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"description\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"projectId\": 0,\r\n  \"boardId\": {\r\n    \"data\": 0\r\n  },\r\n  \"statusId\": {\r\n    \"data\": 0\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/issue/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"issue",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update issue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"name\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"description\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"projectId\": 0,\r\n  \"boardId\": {\r\n    \"data\": 0\r\n  },\r\n  \"statusId\": {\r\n    \"data\": 0\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/issue/update/{{issueId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"issue",
+								"update",
+								"{{issueId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Light update issue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"name\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"description\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"projectId\": 0,\r\n  \"boardId\": {\r\n    \"data\": 0\r\n  },\r\n  \"statusId\": {\r\n    \"data\": 0\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/issue/updateLight/{{issueId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"issue",
+								"updateLight",
+								"{{issueId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Issue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/issue/delete/{{issueId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"issue",
+								"delete",
+								"{{issueId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Projects list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/Project",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Project"
+							],
+							"query": [
+								{
+									"key": "searchedProject",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/Project/{{projectId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Project",
+								"{{projectId}}"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": \"string\",\r\n  \"name\": \"string\",\r\n  \"description\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/Project",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": \"string2\",\r\n  \"name\": \"string2\",\r\n  \"description\": \"string2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/Project/{{projectId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Project",
+								"{{projectId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH update project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": \"string3\",\r\n  \"name\": \"string3\",\r\n  \"description\": \"string3\",\r\n  \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/Project/{{projectId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Project",
+								"{{projectId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/Project/{{projectId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Project",
+								"{{projectId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
