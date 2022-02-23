@@ -25,15 +25,18 @@
 							"query": [
 								{
 									"key": "Alias",
-									"value": ""
+									"value": "",
+									"description": "string"
 								},
 								{
 									"key": "Name",
-									"value": ""
+									"value": "",
+									"description": "string"
 								},
 								{
 									"key": "Description",
-									"value": null
+									"value": null,
+									"description": "string"
 								}
 							]
 						}
@@ -79,13 +82,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{URL}}api/board/2",
+							"raw": "{{URL}}api/board/5",
 							"host": [
 								"{{URL}}api"
 							],
 							"path": [
 								"board",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -265,7 +268,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "Update issue",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -291,6 +294,53 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Light update issue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"name\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"description\": {\r\n    \"data\": \"string\"\r\n  },\r\n  \"projectId\": 0,\r\n  \"boardId\": {\r\n    \"data\": 0\r\n  },\r\n  \"statusId\": {\r\n    \"data\": 0\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/issue/updateLight/1",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"issue",
+								"updateLight",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete issue",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/issue/delete/1",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"issue",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -298,10 +348,143 @@
 			"name": "PROJECT",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Create project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": \"string\",\r\n  \"name\": \"string\",\r\n  \"description\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/Project",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"Project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Return all projects",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/Project",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"Project"
+							],
+							"query": [
+								{
+									"key": "searchedProject",
+									"value": null,
+									"description": "string",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Return project by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/Project/1",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"Project",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update project",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": \"string\",\r\n  \"name\": \"string\",\r\n  \"description\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/Project/1",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"Project",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update project - selected properties",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": \"string1\",\r\n  \"name\": \"string1\",\r\n  \"description\": \"string1\",\r\n  \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/Project/1",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"Project",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/Project/1",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"Project",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
