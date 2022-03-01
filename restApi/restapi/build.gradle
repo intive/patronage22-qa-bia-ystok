@@ -1,0 +1,24 @@
+group 'com.amarbir22.test.services'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'io.rest-assured:rest-assured:3.0.6'
+    testCompile "org.testng:testng:6.8"
+    testCompile 'io.rest-assured:json-schema-validator:3.0.6'
+}
+
+task runTests(type: JavaExec, dependsOn: 'classes') {
+    main = 'org.testng.TestNG'
+    classpath = files("./src/test/resources",
+            project.sourceSets.test.compileClasspath,
+            project.sourceSets.test.runtimeClasspath)
+    args = ["-parallel","methods", "-threadcount", "5", "-d", "./build/test-output", "./src/test/resources/test.xml"]
+}

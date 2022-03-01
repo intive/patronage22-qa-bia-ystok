@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="mySuite" verbose="1">
+    <test name="Tests">
+        <classes>
+            <class name="ii.service.ga.HealthCheckRunner"/>
+            <class name="ii.service.ga.IssuesTests"/>
+            <class name="ii.service.ga.ProjectsTests"/>
+            <class name="ii.service.ga.BoardsTests"/>
+        </classes>
+    </test>
+</suite>
