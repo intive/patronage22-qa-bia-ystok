@@ -1,1 +1,179 @@
+package ii.service.ga;
 
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.baseURI;
+
+public class base {
+
+    @BeforeTest
+    public static void setUp() {
+        baseURI = "http://patronageapi.herokuapp.com/swagger";
+    }
+
+    //BOARDS
+
+    @Test
+    public void getBoardById() {
+
+
+        given()
+                .get("/api/board/0")
+                .then()
+                .statusCode(200)
+                .log().all();
+
+    }
+
+    @Test
+    public void getBoardList() {
+
+
+        given()
+                .get("/api/board/list")
+                .then()
+                .statusCode(200)
+                .log().all();
+
+    }
+
+
+    @Test
+    public void deleteBoardById() {
+
+        when()
+                .delete("/api/board/delete" + 0)
+                .then()
+                .statusCode(404);
+    }
+
+    //BOARDSTATUS
+
+    @Test
+    public void getBoardStatusById() {
+
+
+        given()
+                .get("/api/boardStatus/0")
+                .then()
+                .statusCode(200)
+                .log().all();
+
+    }
+
+    @Test
+    public void getBoardStatusList() {
+
+
+        given()
+                .get("/api/boardStatus")
+                .then()
+                .statusCode(200)
+                .log().all();
+
+    }
+
+
+    @Test
+    public void deleteBoardStatusById() {
+
+        when()
+                .delete("/api/boardStatus" + 0)
+                .then()
+                .statusCode(404);
+    }
+
+
+    //ISSUE
+
+    @Test
+    public void getIssueById() {
+
+
+        given()
+                .get("/api/issue/0")
+                .then()
+                .statusCode(200)
+                .log().all();
+
+    }
+
+    @Test
+    public void getIssuesList() {
+
+
+        given()
+                .get("/api/issue/list")
+                .then()
+                .statusCode(200)
+                .log().all();
+
+    }
+
+
+    @Test
+    public void deleteIssueById() {
+
+        when()
+                .delete("/api/issue/delete" + 0)
+                .then()
+                .statusCode(404);
+    }
+    //PROJECT
+
+    @Test
+    public void getProjectById() {
+
+
+        given()
+                .get("/api/project/0")
+                .then()
+                .statusCode(200)
+                .log().all();
+
+    }
+
+    @Test
+    public void getProjectsList() {
+
+
+        given()
+                .get("/api/project")
+                .then()
+                .statusCode(200)
+                .log().all();
+
+    }
+
+
+    @Test
+    public void deleteProjectById() {
+
+        when()
+                .delete("/api/project/delete" + 0)
+                .then()
+                .statusCode(404);
+    }
+
+
+//    @Test
+//    public void post() {
+//        String requestBody = "{\n" +
+//                "  \"title\": \"foo\",\n" +
+//                "  \"body\": \"bar\",\n" +
+//                "  \"userId\": \"1\" \n}";
+//
+//       Response response = given()
+//                .header("Content-type", "application/json")
+//                .and()
+//                .body(requestBody)
+//                .when()
+//                .post("/api/board/create")
+//                .then()
+//                .extract().response();
+//
+//        Assert.assertEquals(response.statusCode(), 200);
+//    }
+}
