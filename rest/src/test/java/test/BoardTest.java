@@ -34,10 +34,8 @@ public class BoardTest extends TestBase {
                 .when ()
                 .post ("/create")
                 .then ()
-                .log ().all ()
                 .assertThat ()
-                .statusCode (200)
-                .log ().all ();
+                .statusCode (200);
 
     }
 
