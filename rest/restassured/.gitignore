@@ -1,0 +1,16 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# output
+*/target/**
+*/out/**
+*/build/**
+
+# gradle
+.gradle
+
+# IDE
+.idea
