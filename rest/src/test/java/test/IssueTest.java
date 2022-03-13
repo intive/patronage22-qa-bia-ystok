@@ -1,6 +1,7 @@
 package test;
 
 import io.restassured.RestAssured;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -12,23 +13,33 @@ public class IssueTest extends TestBase {
     @BeforeClass
     public void setUpIssueTest() {
         RestAssured.baseURI = configFile.getURL () + "/issue";
+
+        createBody = new JSONObject ()
+                .put ("data", createBody
+                                .put ("boardId", 1)
+                                .put ("statusId", 1)
+                                .put ("projectId", 1));
+
+        updateBody = new JSONObject ()
+                .put ("data", updateBody
+                        .put ("boardId", 1)
+                        .put ("statusId", 1)
+                        .put ("projectId", 1));
+
+        lightUpdateBody = new JSONObject ()
+                .put ("data", lightUpdateBody
+                        .put ("boardId", 1)
+                        .put ("statusId", 1)
+                        .put ("projectId", 1));
+
     }
 
     @Test
     public void createIssue() {
-        String createBody = new JSONObject ()
-                .put ("alias", "createAlias")
-                .put ("name", "createName")
-                .put ("description", "createDesc")
-                .put ("boardId", 0)
-                .put ("statusId", 0)
-                .put ("projectId", 0)
-                .toString ();
-
         given ()
                 .header ("Content-type", "application/json")
                 .and ()
-                .body (createBody)
+                .body (createBody.toString ()).log().all ()
                 .when ()
                 .post ("/create")
                 .then ()
@@ -40,8 +51,8 @@ public class IssueTest extends TestBase {
     public void getIssuesList() {
         given ().
                 when ().
-                get ("/list?PageNumber=1&PageSize=2").
-                then ().
+                get ("/list?PageNumber=1&PageSize=5").
+                then ().log ().all ().
                 assertThat ().
                 statusCode (200);
     }
@@ -50,7 +61,7 @@ public class IssueTest extends TestBase {
     public void getIssueById() {
         given ().
                 when ().
-                get ("/1").
+                get ("/10").
                 then ().
                 assertThat ().
                 statusCode (200);
@@ -60,7 +71,7 @@ public class IssueTest extends TestBase {
     public void deleteIssueById() {
         given ().
                 when ().
-                delete ("/delete/1").
+                delete ("/delete/11").
                 then ().
                 assertThat ().
                 statusCode (200);
@@ -68,21 +79,12 @@ public class IssueTest extends TestBase {
 
     @Test
     public void updateIssueById() {
-        String updateBody = new JSONObject ()
-                .put ("alias", "updateAlias")
-                .put ("name", "updateName")
-                .put ("description", "updateDesc")
-                .put ("boardId", 0)
-                .put ("statusId", 0)
-                .put ("projectId", 0)
-                .toString ();
-
         given ()
                 .header ("Content-type", "application/json")
                 .and ()
-                .body (updateBody)
+                .body (updateBody.toString ())
                 .when ()
-                .put ("/update/1")
+                .put ("/update/10")
                 .then ()
                 .assertThat ()
                 .statusCode (200);
@@ -90,21 +92,12 @@ public class IssueTest extends TestBase {
 
     @Test
     public void lightUpdateIssueById() {
-        String lightUpdateBody = new JSONObject ()
-                .put ("alias", "lightUpdateAlias")
-                .put ("name", "lightUpdateName")
-                .put ("description", "lightUpdateDesc")
-                .put ("boardId", 0)
-                .put ("statusId", 0)
-                .put ("projectId", 0)
-                .toString ();
-
         given ()
                 .header ("Content-type", "application/json")
                 .and ()
-                .body (lightUpdateBody)
+                .body (lightUpdateBody.toString ())
                 .when ()
-                .patch ("/updateLight/1")
+                .patch ("/updateLight/10")
                 .then ()
                 .assertThat ()
                 .statusCode (200);

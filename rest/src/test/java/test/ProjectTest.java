@@ -1,7 +1,7 @@
 package test;
 
 import io.restassured.RestAssured;
-import org.json.JSONObject;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -9,23 +9,17 @@ import static io.restassured.RestAssured.given;
 
 public class ProjectTest extends TestBase {
 
-    @BeforeTest
+    @BeforeClass
     public void setUpProjectTest() {
         RestAssured.baseURI = configFile.getURL () + "/project";
     }
 
     @Test
     public void createProject() {
-        String createBody = new JSONObject ()
-                .put ("alias", "createAlias")
-                .put ("name", "createNAme")
-                .put ("description", "createDesc")
-                .toString ();
-
         given ()
                 .header ("Content-type", "application/json")
                 .and ()
-                .body (createBody)
+                .body (createBody.toString ())
                 .when ()
                 .post ("/create")
                 .then ()
@@ -66,15 +60,10 @@ public class ProjectTest extends TestBase {
 
     @Test
     public void updateProjectById() {
-        String updateBody = new JSONObject ()
-                .put ("alias", "updatedAlias")
-                .put ("name", "updatedName")
-                .put ("description", "updatedDesc")
-                .toString ();
         given ()
                 .header ("Content-type", "application/json")
                 .and ()
-                .body (updateBody)
+                .body (updateBody.toString ())
                 .when ()
                 .put ("api/update/1")
                 .then ()
@@ -84,16 +73,10 @@ public class ProjectTest extends TestBase {
 
     @Test
     public void lightUpdateProjectById() {
-        String lightUpdateBody = new JSONObject ()
-                .put ("alias", "lightUpdatedAlias")
-                .put ("name", "lightUpdatedName")
-                .put ("description", "lightUpdatedDescription")
-                .toString ();
-
         given ()
                 .header ("Content-type", "application/json")
                 .and ()
-                .body (lightUpdateBody)
+                .body (lightUpdateBody.toString ())
                 .when ()
                 .patch ("/updateLight/1")
                 .then ()
