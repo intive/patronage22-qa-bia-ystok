@@ -2,24 +2,22 @@ package test;
 
 import com.github.javafaker.Faker;
 import common.Config;
-import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
 
 import java.io.FileNotFoundException;
 
 public class TestBase {
-    Config configFile = new Config ();
     public JSONObject createBody = new JSONObject ();
     public JSONObject updateBody = new JSONObject ();
     public JSONObject lightUpdateBody = new JSONObject ();
     public Faker faker = new Faker ();
-
-    @BeforeSuite
-    public void setUpLog() {
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails ();
-    }
+    Config configFile = new Config ();
+    Logger logger;
+    Response response;
 
     @BeforeClass
     public void loadConfig() throws FileNotFoundException {
@@ -38,5 +36,9 @@ public class TestBase {
                 .put ("alias", "lightUpdatedAlias" + faker.internet ().ipV6Address ())
                 .put ("name", "lightUpdatedName" + faker.internet ().ipV6Address ())
                 .put ("description", "lightUpdatedDescription" + faker.internet ().ipV6Address ());
+    }
+
+    public void logDataToFile(Response response) {
+        logger.log (Level.toLevel (1), response);
     }
 }

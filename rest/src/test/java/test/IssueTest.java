@@ -1,14 +1,18 @@
 package test;
 
 import io.restassured.RestAssured;
-import org.json.JSONArray;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Date;
+
 import static io.restassured.RestAssured.given;
 
 public class IssueTest extends TestBase {
+
 
     @BeforeClass
     public void setUpIssueTest() {
@@ -16,9 +20,9 @@ public class IssueTest extends TestBase {
 
         createBody = new JSONObject ()
                 .put ("data", createBody
-                                .put ("boardId", 1)
-                                .put ("statusId", 1)
-                                .put ("projectId", 1));
+                        .put ("boardId", 1)
+                        .put ("statusId", 1)
+                        .put ("projectId", 1));
 
         updateBody = new JSONObject ()
                 .put ("data", updateBody
@@ -31,75 +35,104 @@ public class IssueTest extends TestBase {
                         .put ("boardId", 1)
                         .put ("statusId", 1)
                         .put ("projectId", 1));
-
+        logger = Logger.getLogger (IssueTest.class);
     }
+
 
     @Test
     public void createIssue() {
-        given ()
+        logger.log (Level.toLevel (1), "\n--------------\ncreateIssue " + new Date () + " \n--------------\n");
+        response = given ()
                 .header ("Content-type", "application/json")
                 .and ()
-                .body (createBody.toString ()).log().all ()
+                .body (createBody.toString ())
                 .when ()
                 .post ("/create")
                 .then ()
-                .assertThat ()
-                .statusCode (200);
+                .extract ()
+                .response ();
+        logDataToFile (response);
+        response.then ().statusCode (200);
     }
 
     @Test
     public void getIssuesList() {
-        given ().
-                when ().
-                get ("/list?PageNumber=1&PageSize=5").
-                then ().log ().all ().
-                assertThat ().
-                statusCode (200);
+        logger.log (Level.toLevel (1), "\n--------------\ngetIssuesList " + new Date () + " \n--------------\n");
+        response = given ()
+                .when ()
+                .get ("/list?PageNumber=1&PageSize=5")
+                .then ()
+                .extract ()
+                .response ();
+        logDataToFile (response);
+        response
+                .then ()
+                .statusCode (200);
     }
 
     @Test
     public void getIssueById() {
-        given ().
+        logger.log (Level.toLevel (1), "\n--------------\ngetIssueById " + new Date () + " \n--------------\n");
+        response = given ().
                 when ().
                 get ("/10").
                 then ().
-                assertThat ().
-                statusCode (200);
+                extract ().
+                response ();
+        logDataToFile (response);
+        response
+                .then ()
+                .statusCode (200);
     }
 
     @Test
     public void deleteIssueById() {
-        given ().
+        logger.log (Level.toLevel (1), "\n--------------\ndeleteIssueById " + new Date () + " \n--------------\n");
+        response = given ().
                 when ().
                 delete ("/delete/11").
                 then ().
-                assertThat ().
-                statusCode (200);
+                extract ().
+                response ();
+        logDataToFile (response);
+        response
+                .then ()
+                .statusCode (200);
     }
 
     @Test
     public void updateIssueById() {
-        given ()
+        logger.log (Level.toLevel (1), "\n--------------\nupdateIssueById " + new Date () + " \n--------------\n");
+        response = given ()
                 .header ("Content-type", "application/json")
                 .and ()
                 .body (updateBody.toString ())
                 .when ()
                 .put ("/update/10")
                 .then ()
-                .assertThat ()
+                .extract ()
+                .response ();
+        logDataToFile (response);
+        response
+                .then ()
                 .statusCode (200);
     }
 
     @Test
     public void lightUpdateIssueById() {
-        given ()
+        logger.log (Level.toLevel (1), "\n--------------\nlightUpdateIssueById " + new Date () + " \n--------------\n");
+        response = given ()
                 .header ("Content-type", "application/json")
                 .and ()
                 .body (lightUpdateBody.toString ())
                 .when ()
                 .patch ("/updateLight/10")
                 .then ()
-                .assertThat ()
+                .extract ()
+                .response ();
+        logDataToFile (response);
+        response
+                .then ()
                 .statusCode (200);
     }
 }

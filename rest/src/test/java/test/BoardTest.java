@@ -1,9 +1,13 @@
 package test;
 
 import io.restassured.RestAssured;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.util.Date;
 
 import static io.restassured.RestAssured.given;
 
@@ -35,76 +39,103 @@ public class BoardTest extends TestBase {
                         .put ("isActive", true)
                         .put ("createdOn", "2022-02-25T23:44:11.911Z")
                         .put ("modifiedOn", "2022-02-25T23:44:11.911Z"));
-
+        logger = Logger.getLogger (BoardTest.class);
     }
 
     @Test
     public void createBoard() {
-        given ()
+        logger.log (Level.toLevel (1), "\n--------------\ncreateBoard " + new Date () + "\n--------------\n");
+        response = given ()
                 .header ("Content-type", "application/json")
                 .and ()
                 .body (createBody.toString ())
                 .when ()
                 .post ("/create")
                 .then ()
-                .assertThat ()
-                .statusCode (200);
-
+                .extract ()
+                .response ();
+        logDataToFile (response);
+        response.then ().statusCode (200);
     }
 
     @Test
-    public void getList() {
-        given ().
-                when ().
-                get ("/list?PageNumber=1&PageSize=5").
-                then ().log ().all ().
-                assertThat ().
-                statusCode (200);
+    public void getBoardsList() {
+        logger.log (Level.toLevel (1), "\n--------------\ngetBoardsList " + new Date () + " \n--------------\n");
+        response = given ()
+                .when ()
+                .get ("/list?PageNumber=1&PageSize=5")
+                .then ()
+                .extract ()
+                .response ();
+        logDataToFile (response);
+        response
+                .then ()
+                .statusCode (200);
     }
 
     @Test
     public void getBoardById() {
-        given ().
+        logger.log (Level.toLevel (1), "\n--------------\ngetBoardById " + new Date () + " \n--------------\n");
+        response = given ().
                 when ().
-                get ("/2").
+                get ("/10").
                 then ().
-                assertThat ().
-                statusCode (200);
+                extract ().
+                response ();
+        logDataToFile (response);
+        response
+                .then ()
+                .statusCode (200);
     }
 
     @Test
     public void deleteBoardById() {
-        given ().
+        logger.log (Level.toLevel (1), "\n--------------\ndeleteBoardById " + new Date () + " \n--------------\n");
+        response = given ().
                 when ().
-                delete ("/delete/1").
+                delete ("/delete/11").
                 then ().
-                assertThat ().
-                statusCode (200);
+                extract ().
+                response ();
+        logDataToFile (response);
+        response
+                .then ()
+                .statusCode (200);
     }
 
     @Test
     public void updateBoardById() {
-        given ()
+        logger.log (Level.toLevel (1), "\n--------------\nupdateBoardById " + new Date () + " \n--------------\n");
+        response = given ()
                 .header ("Content-type", "application/json")
                 .and ()
                 .body (updateBody.toString ())
                 .when ()
-                .put ("/update/1")
+                .put ("/update/10")
                 .then ()
-                .assertThat ()
+                .extract ()
+                .response ();
+        logDataToFile (response);
+        response
+                .then ()
                 .statusCode (200);
     }
 
     @Test
     public void lightUpdateBoardById() {
-        given ()
+        logger.log (Level.toLevel (1), "\n--------------\nlightUpdateBoardById " + new Date () + " \n--------------\n");
+        response = given ()
                 .header ("Content-type", "application/json")
                 .and ()
                 .body (lightUpdateBody.toString ())
                 .when ()
-                .patch ("/updateLight/1")
+                .patch ("/updateLight/10")
                 .then ()
-                .assertThat ()
+                .extract ()
+                .response ();
+        logDataToFile (response);
+        response
+                .then ()
                 .statusCode (200);
     }
 }
