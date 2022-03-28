@@ -1,13 +1,17 @@
 plugins {
     id 'java'
     id 'application'
+    id 'io.qameta.allure' version '2.8.1'
 }
+
+def allureVersion = "2.17.3"
+
 group 'org.example'
 version '1.0-SNAPSHOT'
-sourceCompatibility = 11
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -19,7 +23,7 @@ dependencies {
     implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
     testCompile fileTree('lib')
     implementation group: 'log4j', name: 'log4j', version: '1.2.17'
-}
+    implementation group: 'io.qameta.allure', name: 'allure-rest-assured', version: '2.17.3'}
 jar {
     manifest {
         attributes "Main-Class": "common.Main"
@@ -33,9 +37,20 @@ application{
     mainClassName = 'common.Main'
 }
 
+allure {
+    aspectjweaver = true
+    autoconfigure = false
+    version = allureVersion
+    resultsDir = file(projectDir.toString()+"allure-results/results/")
+    reportDir = file(projectDir.toString()+"allure-results/report/")
+    useTestNG {
+        version = allureVersion
+    }
+}
+
 test {
     useTestNG() {
-        suites '/src/test/resources/test.xml'
+        suites("/src/test/resources/test.xml")
     }
 }
 
