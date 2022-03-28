@@ -18,7 +18,7 @@ public class BoardTest extends TestBase {
         RestAssured.baseURI = configFile.getURL () + "/board";
         createBody = new JSONObject ()
                 .put ("data", createBody
-                        .put ("boardId", 0)
+                        .put ("boardId", 1)
                         .put ("statusId", 0)
                         .put ("isActive", true)
                         .put ("createdOn", "2022-02-25T23:44:11.911Z")
@@ -26,7 +26,7 @@ public class BoardTest extends TestBase {
 
         updateBody = new JSONObject ()
                 .put ("data", updateBody
-                        .put ("boardId", 0)
+                        .put ("boardId", 1)
                         .put ("statusId", 0)
                         .put ("isActive", true)
                         .put ("createdOn", "2022-02-25T23:44:11.911Z")
@@ -34,7 +34,7 @@ public class BoardTest extends TestBase {
 
         lightUpdateBody = new JSONObject ()
                 .put ("data", lightUpdateBody
-                        .put ("boardId", 0)
+                        .put ("boardId", 1)
                         .put ("statusId", 0)
                         .put ("isActive", true)
                         .put ("createdOn", "2022-02-25T23:44:11.911Z")
@@ -124,7 +124,7 @@ public class BoardTest extends TestBase {
     @Test
     public void lightUpdateBoardById() {
         logger.log (Level.toLevel (1), "\n--------------\nlightUpdateBoardById " + new Date () + " \n--------------\n");
-        response = given ()
+        response = given ().log ().all ()
                 .header ("Content-type", "application/json")
                 .and ()
                 .body (lightUpdateBody.toString ())
@@ -135,7 +135,7 @@ public class BoardTest extends TestBase {
                 .response ();
         logDataToFile (response);
         response
-                .then ()
-                .statusCode (200);
+                .then ().log ().all ()
+                .statusCode (200).log ().all ();
     }
 }

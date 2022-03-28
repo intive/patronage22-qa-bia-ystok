@@ -2,11 +2,13 @@ package test;
 
 import com.github.javafaker.Faker;
 import common.Config;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 
 import java.io.FileNotFoundException;
 
@@ -18,6 +20,11 @@ public class TestBase {
     Config configFile = new Config ();
     Logger logger;
     Response response;
+
+    @BeforeSuite
+    public void base(){
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+    }
 
     @BeforeClass
     public void loadConfig() throws FileNotFoundException {

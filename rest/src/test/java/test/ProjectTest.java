@@ -26,12 +26,12 @@ public class ProjectTest extends TestBase {
                 .and ()
                 .body (createBody.toString ())
                 .when ()
-                .post ("/create")
+                .post ()
                 .then ()
                 .extract ()
                 .response ();
         logDataToFile (response);
-        response.then ().statusCode (200);
+        response.then ().statusCode (201);
     }
 
     @Test
