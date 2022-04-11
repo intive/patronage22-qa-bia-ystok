@@ -12,14 +12,15 @@ public class CreateProject extends Pages {
     }
 
     @Test
-    public void CreateProjectWithValidData(){
+    public void CreateProjectWithValidData() {
         loginPage.fillLogin (config.getValidLogin ())
                 .fillPassword (config.getValidPassword ())
                 .logIn ();
         projectsPage.waitToLoadPage ();
 
-        String projectName = faker.company ().name ();
+        String projectName = faker.company ().name ().replaceAll("[^a-zA-Z0-9]", " ");
         projectsPage.createNewProject (projectName);
+
         String projectNameOnPage = projectsPage.waitToAddProjectOnPage ();
         softAssert.assertEquals (projectName, projectNameOnPage);
         softAssert.assertAll ();
