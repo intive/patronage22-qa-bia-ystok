@@ -18,7 +18,7 @@ public class CreateProject extends Pages {
                 .logIn ();
         projectsPage.waitToLoadPage ();
 
-        String projectName = faker.company ().name ().replaceAll("[^a-zA-Z0-9]", " ");
+        String projectName = faker.company ().name ().replaceAll ("[^a-zA-Z0-9]", " ");
         projectsPage.createNewProject (projectName);
 
         String projectNameOnPage = projectsPage.waitToAddProjectOnPage ();
