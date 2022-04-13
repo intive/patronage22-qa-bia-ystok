@@ -1,211 +1,104 @@
 package ii.service.ga;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-import java.util.HashMap;
-import java.util.Map;
-import static io.restassured.RestAssured.*;
+
+import com.github.javafaker.Faker;
+import lombok.SneakyThrows;
+import org.json.JSONObject;
+
+import java.io.FileInputStream;
+import java.util.Locale;
+import java.util.Properties;
 
 
-public class base {
+public class base{
+
+    static Faker faker = new Faker(new Locale("pl-PL"));
 
 
-    @BeforeTest
-    public static void setUp() {
-        RestAssured.baseURI = "https://patronageapi.herokuapp.com";
-    }
-
-    //BOARDS
-
-
-    @Test
-    public void postBoard() {
+    public JSONObject patchIssueCommentContent = new JSONObject();
 
 
 
-    }
+    @SneakyThrows //funkcja pobierająca link z pliku application.properties
+    public String getUrl(){
 
+        String path = Thread.currentThread().getContextClassLoader().getResource("application.properties").getPath();
 
+        Properties appProp = new Properties();
+        appProp.load(new FileInputStream(path));
 
+        String link = appProp.getProperty("url");
 
-    @Test
-    public void patchBoard() {
-
-         String requestBody = "{\n" +
-                "  \"alias\": \"updatePlease\" \n}";
-
-        Response response = given()
-                .header("Content-type", "application/json")
-                .and()
-                .body(requestBody)
-                .when()
-                .patch("/api/board/updateLight/3")
-                .then()
-                .extract().response();
-
-
+        return link;
     }
 
 
-    @Test
-    public void getBoardById() {
 
 
-        given()
-                .get("/api/board/3")
-                .then()
-                .log().all()
-                .statusCode(200);
+    String postBoardBody = "{\n " +
+            "\"alias\":\"foo\", \n" +
+            "\"name\":\"sidaidhaihida\", \n" +
+            "\"description\":\"noooS\"\n" +
+            "}";
 
-    }
+    String putBoardBody = "{\n " +
+            "\"alias\":\"putalias\", \n" +
+            "\"name\":\"putname\", \n" +
+            "\"description\":\"putdesc\"\n" +
+            "}";
 
-    @Test
-    public void getBoardList() {
-
-
-        given()
-                .get("/api/board/list")
-                .then()
-                .log().all()
-                .statusCode(200);
-
-    }
+    String patchBoardById = "{\n " +
+            "\"alias\":\"patchtestalias\", \n" +
+            "\"name\":\"patchtestname\", \n" +
+            "}";
 
 
-    @Test
-    public void deleteBoardById() {
+    String postBoardStatusBody = "{\n " +
+            "\"boardId\":\"123\", \n" +
+            "\"statusId\":\"1234\", \n" +
+            "}";
 
-        when()
-                .delete("/api/board/delete/" +3)
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
-    }
-
-    //BOARDSTATUS
-
-    @Test
-    public void getBoardStatusById() {
+    String postIssueBody = "{\n " +
+            "\"alias\":\"issuePost04\", \n" +
+            "\"name\":\"myIssue04\", \n" +
+            "\"description\":\"realllyyyyyyyIssueeeeee\",\n" +
+            "\"projectId\":\"123\", \n" +
+            "\"id\":\"10304\", \n" +
+            "\"isActive\":\"true\",\n" +
+            "}";
 
 
-        given()
-                .get("/api/boardStatus/0")
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
+    String postStatusBody = "{\n " +
+            "\"is\":\"5\", \n" +
+            "\"code\":\"code5\", \n" +
+            "}";
+
+    String putStatusBody = "{\n " +
+            "\"is\":\"5\", \n" +
+            "\"code\":\"code5\", \n" +
+            "}";
+
+//    @BeforeClass
+//    public void loadBody() throws FileNotFoundException {
+////        postBoardBody = new JSONObject ()
+////                .put ("alias", "postAlias" + faker.internet ().ipV6Address ())
+////                .put ("name", "postName" + faker.internet ().ipV6Address ())
+////                .put ("description", "postDesc" + faker.internet ().ipV6Address ());
+//
+//
+//        putBoardBody = new JSONObject ()
+//                .put ("alias", "putAlias" + faker.internet ().ipV6Address ())
+//                .put ("name", "putName" + faker.internet ().ipV6Address ())
+//                .put ("description", "putDesc" + faker.internet ().ipV6Address ());
+//
+//        patchBoardBody = new JSONObject ()
+//                .put ("alias", "patchAlias" + faker.internet ().ipV6Address ())
+//                .put ("name", "patchName" + faker.internet ().ipV6Address ())
+//                .put ("description", "patchDesc" + faker.internet ().ipV6Address ());
+//
+//        patchIssueCommentContent = new JSONObject()
+//                .put("content", "putContent" + faker.internet().ipV6Address());
+//    }
 
 
-    }
-
-    @Test
-    public void getBoardStatusList() {
-
-
-        given()
-                .get("/api/boardStatus")
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
-
-    }
-
-
-    @Test
-    public void deleteBoardStatus() {
-
-        when()
-                .delete("/api/boardStatus/" + 0)
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
-    }
-
-
-    //ISSUE
-
-    @Test
-    public void getIssueById() {
-
-
-        given()
-                .get("/api/issue/0")
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
-
-    }
-
-    @Test
-    public void getIssuesList() {
-
-
-        given()
-                .get("/api/issue/list")
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
-
-    }
-
-
-    @Test
-    public void deleteIssueById() {
-
-        when()
-                .delete("/api/issue/delete/" + 0)
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
-    }
-
-
-    //PROJECT
-
-    @Test
-    public void getProjectById() {
-
-
-        given()
-                .get("/api/project/9")
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
-
-    }
-
-    @Test
-    public void getProjectsList() {
-
-
-        given()
-                .get("/api/project")
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
-
-    }
-
-
-    @Test
-    public void deleteProjectById() {
-
-        when()
-                .delete("/api/project/" + 9)
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
-    }
 
 }

@@ -2,7 +2,7 @@
 <suite name="mySuite" verbose="1">
     <test name="Tests">
         <classes>
-            <class name="ii.service.ga.HealthCheckRunner"/>
+            <class name="ii.service.ga."/>
         </classes>
     </test>
 </suite>

@@ -9,12 +9,18 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
+    implementation 'org.projectlombok:lombok:1.18.20'
+    implementation 'org.projectlombok:lombok:1.18.20'
+    implementation 'com.github.selfancy:apollo-client-refresh-configbean:1.0.0-RELEASE'
+    implementation 'com.austinv11.servicer:Servicer:1.0.3'
     testCompile 'io.rest-assured:rest-assured:3.0.6'
     testCompile "org.testng:testng:6.8"
     testCompile 'io.rest-assured:json-schema-validator:3.0.6'
     testImplementation 'org.hamcrest:hamcrest:2.2'
     implementation 'org.json:json:20171018'
+    implementation ('com.github.javafaker:javafaker:1.0.2')
 }
 task runTests(type: JavaExec, dependsOn: 'classes') {
     main = 'org.testng.TestNG'
