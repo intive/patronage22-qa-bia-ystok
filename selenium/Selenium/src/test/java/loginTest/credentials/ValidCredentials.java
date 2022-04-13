@@ -1,22 +1,17 @@
-package loginTest;
+package loginTest.credentials;
 
 import base.Pages;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ValidCredentials extends Pages {
 
-    @BeforeMethod
-    public void setUp() {
-        driver.get (config.getLOG_IN_URL ());
-    }
-
     @Test
-    public void ValidCredentialsLogIn() {
+    public void ValidCredentialsLogIn() throws InterruptedException {
         loginPage.fillLogin (config.getValidLogin ())
                 .fillPassword (config.getValidPassword ())
                 .logIn ();
-        projectsPage.waitToLoadPage ();
+        projectsPage.loadPage (config.getPROJECTS_URL ());
+
         softAssert.assertEquals (driver.getCurrentUrl (), config.getPROJECTS_URL ());
         softAssert.assertAll ();
     }
@@ -28,6 +23,7 @@ public class ValidCredentials extends Pages {
                 .logIn ();
 
         softAssert.assertEquals (driver.getCurrentUrl (), config.getLOG_IN_URL ());
+        softAssert.assertTrue (loginPage.pageLoaded ());
         softAssert.assertEquals (loginPage.getPasswordInput (), "");
         softAssert.assertEquals (loginPage.getLoginInput (), "");
 
@@ -35,8 +31,8 @@ public class ValidCredentials extends Pages {
                 .fillPassword (config.getValidPassword ())
                 .logIn ();
 
-        projectsPage.waitToLoadPage ();
         softAssert.assertEquals (driver.getCurrentUrl (), config.getPROJECTS_URL ());
+        softAssert.assertTrue (projectsPage.pageLoaded ());
         softAssert.assertAll ();
     }
 }

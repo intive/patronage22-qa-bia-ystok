@@ -11,9 +11,9 @@ import org.testng.asserts.SoftAssert;
 import java.io.FileNotFoundException;
 
 public class TestBase {
+    public Config config = new Config ();
     protected WebDriver driver;
     protected SoftAssert softAssert;
-    public Config config = new Config ();
     protected Faker faker;
     DriverFactory driverFactory;
 

@@ -14,22 +14,25 @@ public class Config {
     private Browser browser;
     private String validPassword;
     private String validLogin;
+    private String errorMessage;
 
 
     public void loadConfig() throws FileNotFoundException {
-        InputStream input = new FileInputStream("src/main/resources/config.properties");
-        Properties prop = new Properties();
+        InputStream input = new FileInputStream ("src/main/resources/config.properties");
+        Properties prop = new Properties ();
+
 
         try {
-            prop.load(input);
-            this.setLOG_IN_URL (prop.getProperty("LOG_IN_URL"));
-            this.setPROJECTS_URL(prop.getProperty("PROJECTS_URL"));
-            this.setBrowser(prop.getProperty("browser"));
-            this.setValidPassword (prop.getProperty("validPassword"));
-            this.setValidLogin (prop.getProperty("validLogin"));
+            prop.load (input);
+            this.setLOG_IN_URL (prop.getProperty ("LOG_IN_URL"));
+            this.setPROJECTS_URL (prop.getProperty ("PROJECTS_URL"));
+            this.setBrowser (prop.getProperty ("browser"));
+            this.setValidPassword (prop.getProperty ("validPassword"));
+            this.setValidLogin (prop.getProperty ("validLogin"));
+//            this.setErrorMessage (prop.getProperty ("errorMessage"));
 
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace ();
         }
     }
 
@@ -46,7 +49,8 @@ public class Config {
     }
 
     public void setBrowser(String browser) {
-        this.browser = Browser.valueOf(browser);    }
+        this.browser = Browser.valueOf (browser);
+    }
 
     public String getValidPassword() {
         return validPassword;
@@ -70,5 +74,13 @@ public class Config {
 
     public void setPROJECTS_URL(String PROJECTS_URL) {
         this.PROJECTS_URL = PROJECTS_URL;
+    }
+
+    public String getErrorMessage() {
+        return "Nazwa projektu musi składać się z co najmniej jednego znaku i nie może zaczynać/kończyć się białym znakiem";
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 }

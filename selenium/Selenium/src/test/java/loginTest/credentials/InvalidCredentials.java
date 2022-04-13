@@ -1,15 +1,9 @@
-package loginTest;
+package loginTest.credentials;
 
 import base.Pages;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class InvalidCredentials extends Pages {
-
-    @BeforeMethod
-    public void setUp() {
-        driver.get (config.getLOG_IN_URL ());
-    }
 
     @Test
     public void InvalidCredentialsLogIn() {

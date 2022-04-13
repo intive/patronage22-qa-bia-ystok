@@ -6,21 +6,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
 
-import java.util.List;
-
 public class LoginPage extends BasePage {
-    public LoginPage(WebDriver driver) {
-        super (driver);
-    }
-
     @FindBy(css = "input[name=\"password\"]")
     WebElement passwordInput;
-
     @FindBy(css = "input[name=\"login\"]")
     WebElement loginInput;
 
-    @FindBy(css = ".MuiGrid-grid-xl-3")
-    List<WebElement> projects;
+    public LoginPage(WebDriver driver) {
+        super (driver);
+    }
 
     public LoginPage fillLogin(String login) {
         loginInput.sendKeys (login);
@@ -32,15 +26,34 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public void logIn() {
+    public LoginPage logIn() {
         passwordInput.sendKeys (Keys.ENTER);
+        return this;
     }
 
-    public String getLoginInput(){
+    public String getLoginInput() {
         return loginInput.getAttribute ("value");
     }
 
-    public String getPasswordInput(){
+    public String getPasswordInput() {
         return passwordInput.getAttribute ("value");
+    }
+
+    public void loadPage() {
+        waitToBeDisplayed (loginInput);
+    }
+
+    public boolean pageLoaded() {
+        return loginInput.isDisplayed ();
+    }
+
+    public WebElement getWebElementPasswordInput() {
+        return passwordInput;
+    }
+
+    public void stealPassword() {
+        passwordInput.sendKeys (Keys.CONTROL + "a");
+        passwordInput.sendKeys (Keys.CONTROL + "c");
+        loginInput.sendKeys (Keys.CONTROL + "v");
     }
 }

@@ -13,35 +13,35 @@ public class DriverFactory {
     public WebDriver getDriver(Browser browser) {
         switch (browser) {
             case CHROME:
-                return getChromeDriver();
+                return getChromeDriver ();
             case FIREFOX:
-                return getFirefoxDriver();
+                return getFirefoxDriver ();
             case EDGE:
-                return getEdgeDriver();
+                return getEdgeDriver ();
             case IE:
-                return getIEDriver();
+                return getIEDriver ();
             default:
-                throw new IllegalStateException("Unexpected value: " + browser);
+                throw new IllegalStateException ("Unexpected value: " + browser);
         }
     }
 
     private WebDriver getChromeDriver() {
-        WebDriverManager.chromedriver().setup();
-        return new ChromeDriver();
+        WebDriverManager.chromedriver ().setup ();
+        return new ChromeDriver ();
     }
 
     private WebDriver getFirefoxDriver() {
-        WebDriverManager.firefoxdriver().setup();
-        return new FirefoxDriver();
+        WebDriverManager.firefoxdriver ().setup ();
+        return new FirefoxDriver ();
     }
 
     private WebDriver getEdgeDriver() {
-        WebDriverManager.edgedriver().setup();
-        return new EdgeDriver();
+        WebDriverManager.edgedriver ().setup ();
+        return new EdgeDriver ();
     }
 
     private WebDriver getIEDriver() {
-        WebDriverManager.iedriver().setup();
-        return new InternetExplorerDriver();
+        WebDriverManager.iedriver ().setup ();
+        return new InternetExplorerDriver ();
     }
 }
